@@ -13,6 +13,7 @@
     echo($_SERVER['REQUEST_URI']); ?>
     <p align="right">
         <a href='create.php'>Create</a>
+        <form action=""><button name = "create" value="users">Create</button></form>
     </p>
     <table align="center" border="1">
         <tr>

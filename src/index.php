@@ -1,4 +1,7 @@
 <?php
+/**
+ * Я вообще правильно сделала красивые ссылки или както нужно подругому но без ".htaccess"
+ */
 $main = htmlspecialchars($_POST['user']);
 echo '$_SERVER[REQUEST_URI]=';
 var_dump($_SERVER['REQUEST_URI']);
@@ -14,20 +17,28 @@ echo '$_GET=';
 var_dump($main);
 echo '<br>';
 
-$root = array(
-    "/users" => "main.php",
-    "/meny" => "index_main.php",
-    "/meny/documents" => "/Set_Document/index.php",
-    "/save" => "/save/index.php"
-);
-count($root);
-var_dump($root);
-foreach ($root as $key => $value) {
-    if ($key == $_SERVER['REQUEST_URI']) {
-        require $value;
-    } else {
-        http_response_code(404);
-        echo '404';
-        die();
+class single_toon
+{
+    public static function log()
+    {
+        $root = array(
+            "/meny" => "index_main.php",
+            "/?list=users" => "main.php",
+            "/?create=users" => "create.php",
+            "/meny/documents" => "/Set_Document/index.php",
+            "/save" => "/save/index.php"
+        );
+        //Мне нужно сделать переход на редактирование. Но так что-бы всё работало..
+        count($root);
+        var_dump($root);
+        foreach ($root as $key => $value) {
+            if ($key == $_SERVER['REQUEST_URI']) {
+                require $value;
+            }
+            else{
+                require_once("index_main.php"); //Эта штука вызывается постоянно -_- хз как это исправить
+            }
+        }
     }
 }
+single_toon::log();
