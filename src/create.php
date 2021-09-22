@@ -50,7 +50,7 @@ if (isset($data['registers'])) {
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="create.php">
+                <form name="create" method="post" action="/?create=users">
                     <p><b>Login:</b>
                         <input type="text" required size="40" name="login" value='<?php echo $userLogin ?>'>
                         <hr><b>Name:</b>
