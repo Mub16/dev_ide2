@@ -1,9 +1,9 @@
 <?php
 $fileID = htmlspecialchars($_POST["Edit"]);
-$json = file_get_contents('Set_Document/Documents/_file_derect.json');
+$json = file_get_contents('Set_Document/Documents/_file_derect.json'); // Ошибка Warning: file_get_contents(Set_Document/Documents/_file_derect.json): failed to open stream: No such file or directory in /var/www/Set_Document/update.php on line 3
 $jsonArra = json_decode($json, true);
 $sep = $jsonArra[$fileID];
-$json0 = file_get_contents("Set_Document/Documents/$sep.json");
+$json0 = file_get_contents("Set_Document/Documents/$sep.json"); // Warning: file_get_contents(Set_Document/Documents/.json): failed to open stream: No such file or directory in /var/www/Set_Document/update.php on line 6
 $jsonArra0 = json_decode($json0, true);
 //$URL = ($jsonArra0[$step]);
 $organization = $jsonArra0[0];
