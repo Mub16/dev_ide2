@@ -22,7 +22,7 @@
             <th>Сертификат</th>
         </tr>
         <?php
-        require_once("local/local_functions.php");
+        require_once("Set_Document/local/local_functions.php");
         writeline_table();
         ?>
     </table>

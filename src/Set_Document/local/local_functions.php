@@ -20,11 +20,11 @@ function user_udate()
 }
 function writeline_table()
 {
-    $json = file_get_contents('Documents/_file_derect.json');
+    $json = file_get_contents('Set_Document/Documents/_file_derect.json');
     $jsonArra = json_decode($json, true);
     $start = count($jsonArra);
     for ($step = 0; $step < $start; $step++) {
-        $json0 = file_get_contents("Documents/$jsonArra[$step].json");
+        $json0 = file_get_contents("Set_Document/Documents/$jsonArra[$step].json");
         $jsonArra0 = json_decode($json0, true);
         $organization = $jsonArra0[0];
         $contacts = $jsonArra0[1];
@@ -44,15 +44,15 @@ function writeline_table()
               <td> $Accaunt </td>
               <td> $INN </td>
               <td> $Sertificate </td>
-              <td><form name='bd_edi' method='post' action='update.php'><button name = 'Edit' value='$step'>Edit</button></form>
-                  <form name='bd_del' method='post' action='delete.php'><button name = 'Delete' value='$step'>Delete</button></form></td>
+              <td><form name='bd_edi' method='post' action='Set_Document/update.php'><button name = 'Edit' value='$step'>Edit</button></form>
+                  <form name='bd_del' method='post' action='Set_Document/delete.php'><button name = 'Delete' value='$step'>Delete</button></form></td>
             </tr>
             ");
     }
 }
 function reset_users_json($json)
 {
-    file_put_contents("Documents/_file_derect.json", $json, JSON_FORCE_OBJECT);
+    file_put_contents("Set_Document/Documents/_file_derect.json", $json, JSON_FORCE_OBJECT);
     header("Location: index.php");
     exit;
 }

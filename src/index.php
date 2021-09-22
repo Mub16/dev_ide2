@@ -22,7 +22,7 @@ $root = array(
     "/?create=users" => "create.php",
     "/?list=users" => "main.php",
     "/" => "index_main.php",
-    "/meny/documents" => "/Set_Document/index.php",
+    "/?list=documents" => "Set_Document/index.php",
     "/save" => "/save/index.php"
 );
 

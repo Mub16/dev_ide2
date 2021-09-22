@@ -1,9 +1,9 @@
 <?php
 $fileID = htmlspecialchars($_POST["Edit"]);
-$json = file_get_contents('Documents/_file_derect.json');
+$json = file_get_contents('Set_Document/Documents/_file_derect.json');
 $jsonArra = json_decode($json, true);
 $sep = $jsonArra[$fileID];
-$json0 = file_get_contents("Documents/$sep.json");
+$json0 = file_get_contents("Set_Document/Documents/$sep.json");
 $jsonArra0 = json_decode($json0, true);
 //$URL = ($jsonArra0[$step]);
 $organization = $jsonArra0[0];
@@ -27,7 +27,7 @@ $Sertificate = $jsonArra0[7];
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="update_save.php">
+                <form name="create" method="post" action="Set_Document/update_save.php">
                     <p>
                         <hr><b>Организация:</b>
                         <input type="text" required size="40" name="организация" value="<? echo $organization ?>">
