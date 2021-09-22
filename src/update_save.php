@@ -29,6 +29,6 @@ if ($userLogin == "") {
     $jsonArra[] = $userActive;
     $json = json_encode($jsonArra);
     file_put_contents("Data/users/$fileID.json", $json, JSON_FORCE_OBJECT);
-    header("Location: index.php");
+    header("Location: ?list=users");
     exit;
 }
