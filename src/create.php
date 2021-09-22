@@ -35,6 +35,7 @@ if (isset($data['registers'])) {
         $jsonArra[] = $id;
         $json = json_encode($jsonArra);
         reset_users_json($json);
+        require "404.php";
     }
 }
 ?>
@@ -50,7 +51,7 @@ if (isset($data['registers'])) {
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="/?create=users">
+                <form name="create" method="post" action="/users?create=users">
                     <p><b>Login:</b>
                         <input type="text" required size="40" name="login" value='<?php echo $userLogin ?>'>
                         <hr><b>Name:</b>

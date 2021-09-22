@@ -8,11 +8,16 @@
 
 <body>
     <center>
-        <form action="">
-            <a name="main.php" href="main.php">Users</a>|<a name="Set_Document/index.php" href="Set_Document/index.php">Documents</a>
-            <button name="list" value="users">Users</button>
-            <button name='list' value="documents">Documents</button>
-            <form>
+        <table>
+        <tr>
+        <th><form action='users'>
+                <button>Users</button>
+            </form></th>
+            <th><form action="documents">
+            <button>Documents</button>
+            </form></th>
+</tr>
+        </table>
     </center>
     </table>
 </body>

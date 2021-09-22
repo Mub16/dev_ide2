@@ -19,11 +19,19 @@ $url = preg_replace('#/test#', "", $_SERVER['REQUEST_URI']);
 
 echo $url;
 $root = array(
-    "/?create=users" => "create.php",
-    "/?list=users" => "main.php",
+    "/users=create" => "create.php",
+    "/users?" => "main.php",
     "/" => "index_main.php",
-    "/?list=documents" => "Set_Document/index.php",
-    "/save" => "/save/index.php"
+    "/documents?" => "main_document.php",
+    "/document?create=document" => "create_document.php",
+    "/document=editor" => "update_document.php",
+    "/document=update" => "update_save_document.php",
+    "/document=delete" => "delete_document.php",
+    "/users?create=users" => "create.php",
+    "/users=update" => "update.php",
+    "/users=delete" => "delete.php",
+    "/404" => "404.php"
+
 );
 
 
@@ -40,12 +48,14 @@ foreach ($root as $route => $script) {
         }
         else {
             http_response_code(404);
-            die('404 - Запрошенная страница не найдена');
+            //die('404 - Запрошенная страница не найдена');
+            require "404.php";
         }
     }     
 }
 if($header_404) {
     http_response_code(404);
-    die('404 - Запрошенная страница не найдена');
+    //die('404 - Запрошенная страница не найдена');
+    require "404.php";
 }
 

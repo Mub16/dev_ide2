@@ -7,14 +7,7 @@
 </head>
 
 <body>
-    
-    <?php
-    echo '$_SERVER[REQUEST_URI]='; 
-    echo($_SERVER['REQUEST_URI']); ?>
-    <p align="right">
-        <a href='create.php'>Create</a>
-        <form action=""><button name = "create" value="users">Create</button></form>
-    </p>
+        <form action=""><p align="right"><button name = "create" value="users">Create</button></p></form>
     <table align="center" border="1">
         <tr>
             <th>Login</th>
