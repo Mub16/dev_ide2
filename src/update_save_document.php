@@ -21,5 +21,5 @@ $fileID = htmlspecialchars($_POST["Edit"]);
     $jsonArra[] = $Sertificate;
     $json = json_encode($jsonArra);
     file_put_contents("Documents/$fileID.json", $json, JSON_FORCE_OBJECT);
-    //header("Location: index.php");
-    //exit;
+    header("Location: documents?");
+    exit;

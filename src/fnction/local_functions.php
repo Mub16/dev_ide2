@@ -52,7 +52,7 @@ function writeline_table()
 }
 function reset_users_json($json)
 {
-    file_put_contents("Set_Document/Documents/_file_derect.json", $json, JSON_FORCE_OBJECT);
-    header("Location: index.php");
+    file_put_contents("Documents/_file_derect.json", $json, JSON_FORCE_OBJECT);
+    header("Location: documents?");
     exit;
 }

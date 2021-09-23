@@ -30,6 +30,8 @@ if (isset($data['registers'])) {
         $jsonArra[] = $id;
         $json = json_encode($jsonArra);
         reset_users_json($json);
+        header("Location: documents?");
+        exit;
     }
 }
 ?>
@@ -45,7 +47,7 @@ if (isset($data['registers'])) {
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="create.php">
+                <form name="create" method="post" action="">
                     <p>
                         <hr><b>Организация:</b>
                         <input type="text" required size="40" name="организация">

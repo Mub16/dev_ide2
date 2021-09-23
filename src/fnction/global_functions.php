@@ -47,8 +47,8 @@ function writeline_table()
 function reset_users_json($json)
 {
     file_put_contents("Data/users/_file_derect.json", $json, JSON_FORCE_OBJECT);
-    //header("Location: /?list=users");
-    //exit;
+    header("Location: users?");
+    exit;
 }
 function haders(){
     $create_users = "";

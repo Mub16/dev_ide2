@@ -35,7 +35,6 @@ if (isset($data['registers'])) {
         $jsonArra[] = $id;
         $json = json_encode($jsonArra);
         reset_users_json($json);
-        require "404.php";
     }
 }
 ?>
