@@ -44,15 +44,22 @@ class users
         }
     }
 
-    static function readelen($jsonArra0)
+    static function readelen($fileID)
     {
         require("rewrite/update.php");
+        //var_dump($fileID);
+        $json = file_get_contents('Data/users/_file_derect.json');
+        $jsonArra = json_decode($json, true);
+        $sep = $jsonArra[$fileID];//Проблема гдето здесь решаю.
+        $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
+        $jsonArra0 = json_decode($json0, true);
         $userLogin = $jsonArra0[0];
         $userName = $jsonArra0[1];
         $userLastName = $jsonArra0[2];
         $userDate = $jsonArra0[3];
         $userActive = $jsonArra0[4];
         var_dump($jsonArra0);
+        var_dump($sep);
     }
 
     static function rewrite($userLogin, $userName, $userLastName, $userDate, $userActive, $fileID)

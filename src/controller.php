@@ -58,12 +58,7 @@ class user
     {
         $fileID = htmlspecialchars($_POST["Edit"]);
         var_dump($fileID);
-        $json = file_get_contents('Data/users/_file_derect.json');
-        $jsonArra = json_decode($json, true);
-        $sep = $jsonArra[$fileID];//Проблема гдето здесь решаю.
-        $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
-        $jsonArra0 = json_decode($json0, true);
-        users::readelen($jsonArra0);
+        users::readelen($fileID);
     }
     static function rewrite()
     {
