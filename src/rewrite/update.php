@@ -1,6 +1,3 @@
-<?php
-
-?>
 <html>
 <head>
     <title>
@@ -11,7 +8,7 @@
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="update_save.php">
+                <form name="create" method="post" action="/update">
                     <p><b>Login:</b>
                         <input type="text" required size="40" name="login" value='<?php echo $userLogin ?>'>
                         <hr><b>Name:</b>

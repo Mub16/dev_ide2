@@ -5,17 +5,19 @@ class router
 {
     static function router_bat()
     {
-        $url = preg_replace('#/test#', "", $_SERVER['REQUEST_URI']);
+        $url = $_SERVER['REQUEST_URI'];
+        echo($url);
+        
         $root = array(
+            "/" => "controler.php",
             "/n" => "writeline/index_main.php",
-            "/users?" => "writeline/main.php",
+            "/users?" => "/writeline/main.php",
+            "/users=update" => "controler.php",
             "/create.user" => "controler.php",
             "/create.document" => "controler.php",
-            "/" => "controler.php",
-
+            "/update" => "controler.php",
             "/404" => "404.php"
         );
-        count($root);
         $header_404 = true;
         foreach ($root as $route => $script) {
             if ($route == $url) {

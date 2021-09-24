@@ -1,18 +1,12 @@
 <?php
 require_once("fnction/global_functions.php");
+require_once("controller.php");
 require_once("view.php");
 class users
 {
     static function writeline()
     {
-?>
-        <th>Login</th>
-        <th>Name</th>
-        <th>Last name</th>
-        <th>Bilden</th>
-        <th>Active</th>
-        <th></th>
-<?
+        require("writeline/main.php");
     }
 
     static function append($userLogin, $userName, $userLastName, $userDate, $userActive)
@@ -43,24 +37,22 @@ class users
             $jsonArra = json_decode($json, true);
             $jsonArra[] = $id;
             $json = json_encode($jsonArra);
-            //reset_users_json($json);
+            file_put_contents("Data/users/_file_derect.json", $json, JSON_FORCE_OBJECT);
+            header("Location: users?");
             echo ("ok");
+            exit;
         }
     }
 
-    static function readelen()
+    static function readelen($jsonArra0)
     {
-        $fileID = htmlspecialchars($_POST["Edit"]);
-        $json = file_get_contents('Data/users/_file_derect.json');
-        $jsonArra = json_decode($json, true);
-        $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
-        $jsonArra0 = json_decode($json0, true);
-        //$URL = ($jsonArra0[$step]);
+        require("rewrite/update.php");
         $userLogin = $jsonArra0[0];
         $userName = $jsonArra0[1];
         $userLastName = $jsonArra0[2];
         $userDate = $jsonArra0[3];
         $userActive = $jsonArra0[4];
+        var_dump($jsonArra0);
     }
 
     static function rewrite($userLogin, $userName, $userLastName, $userDate, $userActive, $fileID)
@@ -85,9 +77,19 @@ class users
             $jsonArra[] = $userActive;
             $json = json_encode($jsonArra);
             file_put_contents("Data/users/$fileID.json", $json, JSON_FORCE_OBJECT);
-            header("Location: /");
-            exit;
         }
+    }
+
+    static function erase($fileID)
+    {
+        $json = file_get_contents('Data/users/_file_derect.json');
+        $jsonArra = json_decode($json, true);
+        unlink("Data/users/$jsonArra[$fileID].json");
+        unset($jsonArra[$fileID]);
+        sort($jsonArra);
+        $jsonArra = array_replace($jsonArra);
+        $json = json_encode($jsonArra);
+        reset_users_json($json);
     }
 }
 

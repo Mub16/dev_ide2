@@ -5,14 +5,36 @@ class int_mine
 {
     static function router()
     {
+        $url = preg_replace('#/test#', "", $_SERVER['REQUEST_URI']);
+        if ($url == "/") {
+            require "writeline/index_main.php";
+        } else if ($url == "/users?") {
+            user::writeline();
+        } else if ($url == "/documents?") {
+            //documents::writeline();
+            require "404.php";
+        } else if ($url == "/users?create=users") {
+            require "create/create.php";
+            //user::append();
+        } else if ($url == "/create.user") {
+            user::append();
+        }
+        else if ($url == "/users=delete") {
+            user::erase();}
+        else if ($url == "/users=update"){
+            user::readelen();
+        }
+        else if ($url == "/update"){
+            user::rewrite();
+        }
+         else {
+            require "404.php";
+        }
     }
 }
 /** 
-$url = preg_replace('#/test#', "", $_SERVER['REQUEST_URI']);
-if ($url=="/") {
-user::writeline();
-}
-*/
+
+ */
 class user
 {
     static function writeline()
@@ -32,18 +54,32 @@ class user
 
         users::append($userLogin, $userName, $userLastName, $userDate, $userActive);
     }
-
-    function rewrite()
+    static function readelen()
+    {
+        $fileID = htmlspecialchars($_POST["Edit"]);
+        var_dump($fileID);
+        $json = file_get_contents('Data/users/_file_derect.json');
+        $jsonArra = json_decode($json, true);
+        $sep = $jsonArra[$fileID];//Проблема гдето здесь решаю.
+        $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
+        $jsonArra0 = json_decode($json0, true);
+        users::readelen($jsonArra0);
+    }
+    static function rewrite()
     {
         $userLogin = htmlspecialchars($_POST['login']);
         $userName = htmlspecialchars($_POST['name']);
         $userLastName = htmlspecialchars($_POST['lastname']);
         $userDate = htmlspecialchars($_POST['date']);
         $userActive = htmlspecialchars($_POST['chec']);
-
         $fileID = htmlspecialchars($_POST["Edit"]);
-
+        var_dump($fileID);
+        die();
         users::rewrite($userLogin, $userName, $userLastName, $userDate, $userActive, $fileID);
+    }
+    static function erase(){
+        $fileID = htmlspecialchars($_POST["Delete"]);
+        users::erase($fileID);
     }
 }
 
@@ -57,7 +93,7 @@ class user
  *輯駲f迯瓲i軌帶′　　　　　`守I厖孩
  *幢儂儼巓襴緲′　 　 　 　 　 `守枢i磬廛
  *嚠篩I縒縡夢'´　　　 　 　 　 　 　 `守峽f
- *蚌紕襴緲′　　  DOCUMENT_WORK　　　　‘守畝
+ *蚌紕襴緲′　　 DOCUMENTS_WORK　　　　‘守畝
  *瓲軌揄′　　　　　　　　　　　　　     ,gf毯綴
  *鳫襴鑿　　　　　　　　　　 　 　       奪寔f厦
  *絨緲′　　　　　　 　 　 　 　　　　 　 ”'罨悳
@@ -67,6 +103,6 @@ class user
  *巓襴驫 霤I緲緲　　 纜穐　　甯絛跨飩i髢綴馳爺綴｡`'等誄 
  *
  */
-class documents {
-    
+class documents
+{
 }

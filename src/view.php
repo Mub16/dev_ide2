@@ -11,27 +11,5 @@ require_once "controller.php";
     }
 }
  */
+int_mine::router();
 ?>
-    <html>
-
-    <head>
-        <title>
-            web
-        </title>
-    </head>
-
-    <body>
-        <form action="">
-            <p align="right"><button name="create" value="users">Create</button></p>
-        </form>
-        <table align="center" border="1">
-            <tr>
-                <?php user::writeline(); ?>
-            </tr>
-            <?php
-            writeline_table();
-            ?>
-        </table>
-    </body>
-
-    </html>
