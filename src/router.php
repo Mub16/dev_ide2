@@ -1,22 +1,18 @@
 <?php
 require_once("controller.php");
+require_once("fnction/global_functions.php");
 class router
 {
-    function router()
+    static function router_bat()
     {
         $url = preg_replace('#/test#', "", $_SERVER['REQUEST_URI']);
         $root = array(
-            "/users=create" => "create.php",
+            "/n" => "writeline/index_main.php",
             "/users?" => "writeline/main.php",
-            "/" => "writeline/index_main.php",
-            "/documents?" => "main_document.php",
-            "/document?create=document" => "create_document.php",
-            "/document=editor" => "update_document.php",
-            "/document=update" => "update_save_document.php",
-            "/document=delete" => "delete_document.php",
-            "/users?create=users" => "create.php",
-            "/users=update" => "update.php",
-            "/users=delete" => "delete.php",
+            "/create.user" => "controler.php",
+            "/create.document" => "controler.php",
+            "/" => "controler.php",
+
             "/404" => "404.php"
         );
         count($root);

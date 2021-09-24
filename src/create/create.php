@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <title>
         web-create
@@ -10,7 +9,7 @@
     <table align="center" border=1>
         <tr>
             <td>
-                <form name="create" method="post" action="/users?create=users">
+                <form name="create" method="post" action="/">
                     <p><b>Login:</b>
                         <input type="text" required size="40" name="login" value='<?php echo $userLogin ?>'>
                         <hr><b>Name:</b>

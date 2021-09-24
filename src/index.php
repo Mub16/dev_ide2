@@ -1,5 +1,6 @@
 <?php
 require_once("router.php");
+require_once("controller.php");
 /** Отладочная хрень:
 $main = htmlspecialchars($_POST['user']);
 //header("Location: /meny");
@@ -17,7 +18,5 @@ echo '$_GET=';
 var_dump($main);
 echo '<br>';
 */
-
-
-$root = new router;
+router::router_bat();
 ?>

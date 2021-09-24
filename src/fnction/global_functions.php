@@ -10,14 +10,6 @@ function backMain()
 {
     header("Refresh: 1;URL=update.php");
 }
-function user_udate()
-{
-    $userLogin = htmlspecialchars($_POST['login']);
-    $userName = htmlspecialchars($_POST['name']);
-    $userLastName = htmlspecialchars($_POST['lastname']);
-    $userDate = htmlspecialchars($_POST['date']);
-    $userActive = htmlspecialchars($_POST['chec']);
-}
 function writeline_table()
 {
     $json = file_get_contents('Data/users/_file_derect.json');

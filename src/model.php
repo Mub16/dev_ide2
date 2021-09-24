@@ -1,26 +1,22 @@
 <?php
+require_once("fnction/global_functions.php");
+require_once("view.php");
 class users
 {
-    public $userLogin;
-    public $userName;
-    public $userLastName;
-    public $userDate;
-    public $userActive;
-
-    function writeline()
+    static function writeline()
     {
-        require_once("fnction/global_functions.php");
-        writeline_table();
+?>
+        <th>Login</th>
+        <th>Name</th>
+        <th>Last name</th>
+        <th>Bilden</th>
+        <th>Active</th>
+        <th></th>
+<?
     }
 
-    public static function append()
+    static function append($userLogin, $userName, $userLastName, $userDate, $userActive)
     {
-        $userLogin = htmlspecialchars($_POST['login']);
-        $userName = htmlspecialchars($_POST['name']);
-        $userLastName = htmlspecialchars($_POST['lastname']);
-        $userDate = htmlspecialchars($_POST['date']);
-        $userActive = htmlspecialchars($_POST['chec']);
-        $data = $_POST;
         if ($userLogin == "") {
             $err[] = ("Err Login");
             echo ("Err Login");
@@ -50,60 +46,73 @@ class users
             //reset_users_json($json);
             echo ("ok");
         }
+    }
 
-        function readelen()
-        {
-            $fileID = htmlspecialchars($_POST["Edit"]);
-            $json = file_get_contents('Data/users/_file_derect.json');
-            $jsonArra = json_decode($json, true);
-            $sep = $jsonArra[$fileID];
-            $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
-            $jsonArra0 = json_decode($json0, true);
-            //$URL = ($jsonArra0[$step]);
-            $userLogin = $jsonArra0[0];
-            $userName = $jsonArra0[1];
-            $userLastName = $jsonArra0[2];
-            $userDate = $jsonArra0[3];
-            $userActive = $jsonArra0[4];
-        }
-        function rewrite()
-        {
-            $userLogin = htmlspecialchars($_POST['login']);
-            $userName = htmlspecialchars($_POST['name']);
-            $userLastName = htmlspecialchars($_POST['lastname']);
-            $userDate = htmlspecialchars($_POST['date']);
-            $userActive = htmlspecialchars($_POST['chec']);
+    static function readelen()
+    {
+        $fileID = htmlspecialchars($_POST["Edit"]);
+        $json = file_get_contents('Data/users/_file_derect.json');
+        $jsonArra = json_decode($json, true);
+        $json0 = file_get_contents("Data/users/$jsonArra[$fileID].json");
+        $jsonArra0 = json_decode($json0, true);
+        //$URL = ($jsonArra0[$step]);
+        $userLogin = $jsonArra0[0];
+        $userName = $jsonArra0[1];
+        $userLastName = $jsonArra0[2];
+        $userDate = $jsonArra0[3];
+        $userActive = $jsonArra0[4];
+    }
 
-            $fileID = htmlspecialchars($_POST["Edit"]);
-
-            if ($userLogin == "") {
-                backMain();
-                echo ("Err Login");
-            } elseif ($userName == "") {
-                backMain();
-                echo ("Err Name");
-            } elseif ($userLastName == "") {
-                backMain();
-                echo ("Err Last Name");
-            } elseif ($userDate == "") {
-                backMain();
-                echo ("Err Date Name");
-            } else {
-                $jsonArra[] = $userLogin;
-                $jsonArra[] = $userName;
-                $jsonArra[] = $userLastName;
-                $jsonArra[] = $userDate;
-                $jsonArra[] = $userActive;
-                $json = json_encode($jsonArra);
-                file_put_contents("Data/users/$fileID.json", $json, JSON_FORCE_OBJECT);
-                header("Location: ?list=users");
-                exit;
-            }
+    static function rewrite($userLogin, $userName, $userLastName, $userDate, $userActive, $fileID)
+    {
+        if ($userLogin == "") {
+            backMain();
+            echo ("Err Login");
+        } elseif ($userName == "") {
+            backMain();
+            echo ("Err Name");
+        } elseif ($userLastName == "") {
+            backMain();
+            echo ("Err Last Name");
+        } elseif ($userDate == "") {
+            backMain();
+            echo ("Err Date Name");
+        } else {
+            $jsonArra[] = $userLogin;
+            $jsonArra[] = $userName;
+            $jsonArra[] = $userLastName;
+            $jsonArra[] = $userDate;
+            $jsonArra[] = $userActive;
+            $json = json_encode($jsonArra);
+            file_put_contents("Data/users/$fileID.json", $json, JSON_FORCE_OBJECT);
+            header("Location: /");
+            exit;
         }
     }
 }
 
-class documents
+/**
+ * 
+ *殪幢緻Iii爰曷樔黎㌢´　　｀ⅷ
+ *艇艀裲f睚鳫巓襴骸　　　　贒憊
+ *殪幢緻I翰儂樔黎夢'”　 　 ,ｨ傾
+ *盥皋袍i耘蚌紕偸′　　　 雫寬I
+ *悗f篝嚠篩i縒縡齢　　 　 Ⅷ辨f
+ *輯駲f迯瓲i軌帶′　　　　　`守I厖孩
+ *幢儂儼巓襴緲′　 　 　 　 　 `守枢i磬廛
+ *嚠篩I縒縡夢'´　　　 　 　 　 　 　 `守峽f
+ *蚌紕襴緲′　　  DOCUMENT_WORK　　　　‘守畝
+ *瓲軌揄′　　　　　　　　　　　　　     ,gf毯綴
+ *鳫襴鑿　　　　　　　　　　 　 　       奪寔f厦
+ *絨緲′　　　　　　 　 　 　 　　　　 　 ”'罨悳
+ *巓緲′　　　　　　 　 　 　 　 　 　 綴〟 ”'罨椁
+ *巓登嶮 薤篝㎜㎜ g　 　 緲　 　 甯體i爺綴｡, ”'罨琥
+ *軌襴暹 甯幗緲fi'　　 緲',纜　　贒i綟碕碚爺綴｡ ”'罨皴
+ *巓襴驫 霤I緲緲　　 纜穐　　甯絛跨飩i髢綴馳爺綴｡`'等誄 
+ *
+ */
+
+class document
 {
     function writeline()
     {
@@ -168,6 +177,7 @@ class documents
         $INN = $jsonArra0[6];
         $Sertificate = $jsonArra0[7];
     }
+
     function rewrite()
     {
         require_once("fnction/local_functions.php");
@@ -180,8 +190,8 @@ class documents
         $Accaunt = htmlspecialchars($_POST['сумма']);
         $INN = htmlspecialchars($_POST['ИНН']);
         $Sertificate = htmlspecialchars($_POST['сертификат']);
-
         $fileID = htmlspecialchars($_POST["Edit"]);
+
         $jsonArra[] = $organization;
         $jsonArra[] = $contacts;
         $jsonArra[] = $dateStart;
