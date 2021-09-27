@@ -7,7 +7,7 @@
 </head>
 
 <body>
-        <form action=""><p align="right"><button name = "create" value="users">Create</button></p></form>
+        <form action=""><p align="right"><button name = "create">Create</button></p></form>
     <table align="center" border="1">
         <tr>
         <th>Login</th>

@@ -1,4 +1,4 @@
 <?php
 require_once("router.php");
-//router::router_bat();
+router::router_bat();
 ?>

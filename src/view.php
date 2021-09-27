@@ -11,5 +11,5 @@ require_once "controller.php";
     }
 }
  */
-int_mine::router();
+//int_mine::router();
 ?>

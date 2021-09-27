@@ -30,7 +30,7 @@ function writeline_table()
               <td> $userLastName </td>
               <td> $userDate </td>
               <td> $userActive </td>
-              <td><form name='bd_edi' method='post' action='users=update'><button name = 'Edit' value='$step'>Edit</button></form>
+              <td><form name='bd_edi' method='get' action='user/update'><button name = 'id' value='$step'>Edit</button></form>
                   <form name='bd_del' method='post' action='users=delete'><button name = 'Delete' value='$step'>Delete</button></form></td>
             </tr>
             ");
