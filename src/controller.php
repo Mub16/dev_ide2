@@ -73,7 +73,7 @@ class user
         $userDate = htmlspecialchars($_POST['date']);
         $userActive = htmlspecialchars($_POST['chec']);
         user::val($userLogin,$userName,$userLastName,$userDate,$userActive);
-        haders("Location: users?");
+        //haders("Location: users?");
 
     }
     static function readelen()

@@ -1,5 +1,5 @@
 <?php
-//require_once("controller.php");
+require_once("controller.php");
 require_once("fnction/global_functions.php");
 require_once("model.php");
 
@@ -12,10 +12,8 @@ class Controller
         $userLastName = htmlspecialchars($_POST['lastname']);
         $userDate = htmlspecialchars($_POST['date']);
         $userActive = htmlspecialchars($_POST['chec']);
-        $fileID = htmlspecialchars($_POST["Edit"]);
-        var_dump($fileID);
-        die();
-        users::rewrite($userLogin, $userName, $userLastName, $userDate, $userActive, $fileID);
+        require "create/create.php";
+        user::val($userLogin,$userName,$userLastName,$userDate,$userActive);
     }
 
     function list()

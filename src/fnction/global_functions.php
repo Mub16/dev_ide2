@@ -8,7 +8,7 @@ function test()
 }
 function backMain()
 {
-    header("Refresh: 1;URL=update.php");
+    //header("Refresh: 1;URL=update.php");
 }
 function writeline_table()
 {
